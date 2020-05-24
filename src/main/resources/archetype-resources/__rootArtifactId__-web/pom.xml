@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>${groupId}</groupId>
+        <artifactId>${rootArtifactId}</artifactId>
+        <version>${version}</version>
+    </parent>
+
+    <artifactId>${artifactId}</artifactId>
+    <name>${artifactId}</name>
+    <packaging>war</packaging>
+
+    <dependencies>
+        <!-- facade模块-->
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>${rootArtifactId}-facade</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>devtest</id>
+            <properties>
+                <profiles.active>devtest</profiles.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>yfb</id>
+            <properties>
+                <profiles.active>yfb</profiles.active>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>production</id>
+            <properties>
+                <profiles.active>production</profiles.active>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <!-- 打包最终的名字-->
+        <finalName>${artifactId}</finalName>
+        <!-- 其中环境配置文件选用哪个-->
+        <filters>
+            <filter>src/main/resources/application-${profiles.active}.properties</filter>
+        </filters>
+        <plugins>
+            <!-- 校验按环境隔离的配置文件格式和内容是否按约定配置(test,yfb,online的配置项的key和数量都一样) -->
+            <plugin>
+                <groupId>com.jd.newnethp.diag.maven.plugin</groupId>
+                <artifactId>com-jd-newnethp-diag-maven-plugin-confcheck</artifactId>
+                <version>1.0.1-SNAPSHOT</version>
+                <configuration>
+                    <!-- 此配置可省略 默认为 env-config-*.properties -->
+                    <envConfigFileName>application-*.properties</envConfigFileName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>envConfigFileCheck</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

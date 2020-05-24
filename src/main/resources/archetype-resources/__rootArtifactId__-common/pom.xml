@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+            http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>${groupId}</groupId>
+        <artifactId>${rootArtifactId}</artifactId>
+        <version>${version}</version>
+    </parent>
+
+    <artifactId>${artifactId}</artifactId>
+    <name>${artifactId}</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <fastjson.version>1.2.60</fastjson.version>
+        <tomcat.version>9.0.22</tomcat.version>
+        <druid-starter-version>1.1.17</druid-starter-version>
+        <mysql-connector>8.0.16</mysql-connector>
+        <medicine-b2c-base-common>3.0.1-SNAPSHOT</medicine-b2c-base-common>
+        <medicine-b2c-commoncenter-safelog>1.0.3</medicine-b2c-commoncenter-safelog>
+        <mybatis-starter>2.0.1</mybatis-starter>
+        <junit-version>4.12</junit-version>
+        <jsf-version>1.6.9</jsf-version>
+        <jd-configsec-sdk>1.0.3-SNAPSHOT</jd-configsec-sdk>
+        <jd-security-tomcat>1.13.WEBAPP</jd-security-tomcat>
+        <angeleye.version>1.0.1-SNAPSHOT</angeleye.version>
+        <client.version>1.0.15</client.version>
+    </properties>
+
+    <dependencies>
+        <!-- export模块-->
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>${rootArtifactId}-export</artifactId>
+            <version>${version}</version>
+        </dependency>
+
+        <!-- springboot-web-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- springboot-test-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <!-- springboot-mybatis -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis-starter}</version>
+        </dependency>
+        <!-- 安全日志-->
+        <dependency>
+            <groupId>com.jd.medicine.b2c.commoncenter</groupId>
+            <artifactId>medicine-b2c-commoncenter-safelog</artifactId>
+            <version>${medicine-b2c-commoncenter-safelog}</version>
+        </dependency>
+        <!-- 天使之眼 -->
+        <dependency>
+            <groupId>com.jd.fly.angel.eye</groupId>
+            <artifactId>angeleye-core</artifactId>
+            <version>${angeleye.version}</version>
+        </dependency>
+        <!-- 权限系统 -->
+        <dependency>
+            <groupId>com.jd.medicine.authorization.center</groupId>
+            <artifactId>medicine-authorization-center-export</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <!-- fastJson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <!-- 内置tomcat -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>${tomcat.version}</version>
+            <!--<scope>provided</scope>-->
+        </dependency>
+        <!-- jsf -->
+        <dependency>
+            <groupId>com.jd</groupId>
+            <artifactId>jsf</artifactId>
+            <version>${jsf-version}</version>
+        </dependency>
+        <!-- important security -->
+        <dependency>
+            <groupId>com.jd.security.configsec</groupId>
+            <artifactId>spring-configsec-sdk</artifactId>
+            <version>${jd-configsec-sdk}</version>
+        </dependency>
+        <!--tomcat安全加固-->
+        <dependency>
+            <groupId>com.jd.security</groupId>
+            <artifactId>jd-security-tomcat</artifactId>
+            <version>${jd-security-tomcat}</version>
+        </dependency>
+        <!-- MySQL 连接驱动依赖 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- alibaba的druid数据库连接池 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid-starter-version}</version>
+        </dependency>
+        <!--jmq-->
+        <dependency>
+            <groupId>com.jd.jmq.route</groupId>
+            <artifactId>nethp-jmq-route</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jd.jmq</groupId>
+            <artifactId>jmq-client-spring</artifactId>
+            <version>2.2.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>netty-all</artifactId>
+                    <groupId>io.netty</groupId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.jd.ump</groupId>
+                    <artifactId>profiler</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- junit-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit-version}</version>
+        </dependency>
+        <!-- test end-->
+        <!-- 部门统一common包 -->
+        <dependency>
+            <groupId>com.jd.medicine.b2c.base</groupId>
+            <artifactId>medicine-b2c-base-common</artifactId>
+            <version>${medicine-b2c-base-common}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>netty-all</artifactId>
+                    <groupId>io.netty</groupId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>druid</artifactId>
+                    <groupId>com.alibaba</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>laf-extension-core</artifactId>
+                    <groupId>com.jd.laf</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>log4j</artifactId>
+                    <groupId>log4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>log4j-1.2-api</artifactId>
+                    <groupId>org.apache.logging.log4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>log4j-core</artifactId>
+                    <groupId>org.apache.logging.log4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>log4j-web</artifactId>
+                    <groupId>org.apache.logging.log4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>log4j-api</artifactId>
+                    <groupId>org.apache.logging.log4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>log4j-slf4j-impl</artifactId>
+                    <groupId>org.apache.logging.log4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.alibaba</groupId>
+                    <artifactId>fastjson</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--互医组件库：提供通用组件，joy寓意京东提供的基础平台-->
+        <dependency>
+            <groupId>nethp-components-zootopia-joy</groupId>
+            <artifactId>nethp-components-zootopia-joy-core</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+        </dependency>
+        <!--lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.22</version>
+            <!--<scope>provided</scope>-->
+        </dependency>
+
+        <!-- 支持jdk8 time api -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-typehandlers-jsr310</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <!-- 支持jdk8 time api -->
+        <!--ducc-->
+        <!--<dependency>
+            <groupId>com.jd.laf.config</groupId>
+            <artifactId>laf-config-client-jd-springboot-starter</artifactId>
+            <version>${client.version}</version>
+            <type>pom</type>
+        </dependency>-->
+
+    </dependencies>
+
+</project>
