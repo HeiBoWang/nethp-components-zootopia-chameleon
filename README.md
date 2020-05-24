@@ -11,8 +11,11 @@
     artifactId:nethp-components-zootopia-chameleon
     version:1.1-SNAPSHOT
 
-
+!(https://github.com/HeiBoWang/nethp-components-zootopia-chameleon/blob/master/src/main/resources/img/image2020-4-10_13-52-39.png?raw=true)
 ####4、选择已添加的该archetype，然后录入新项目的groupId、artifactId即可
+!(https://github.com/HeiBoWang/nethp-components-zootopia-chameleon/blob/master/src/main/resources/img/image2020-4-10_13-55-7.png?raw=true)
+####5、新建工程如下：
+!(https://github.com/HeiBoWang/nethp-components-zootopia-chameleon/blob/master/src/main/resources/img/image2020-4-10_13-58-56.png?raw=true)
 
 ### 创建项目后如何启动：
 #### 1、录入新工程的APP_NAME
